@@ -16,7 +16,7 @@ StaticArena static_arena_new(size_t capacity) {
 
 SizedAllocation static_arena_alloc(StaticArena *arena, size_t size) {
     if (arena->next + size >= arena->start + arena->capacity) {
-        fprintf(stderr, "Unable to allocate %lu bytes in static arena: out of memory!\n", size);
+        fprintf(stderr, "Warning: Unable to allocate %lu bytes in static arena: out of memory!\n", size);
         return sized_allocation_null();
     }
 
@@ -25,8 +25,6 @@ SizedAllocation static_arena_alloc(StaticArena *arena, size_t size) {
     alloc.size = size;
     alloc.ptr = arena->next;
     arena->next += size;
-
-    printf("Allocated chunk of size %lu in arena at %p, offset from start: %lu\n", size, arena->start, alloc.ptr - arena->start);
 
     return alloc;
 }
