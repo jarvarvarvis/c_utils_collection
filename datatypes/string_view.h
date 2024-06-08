@@ -14,6 +14,12 @@ typedef struct {
 StringView string_view_create(char *ptr, size_t size);
 
 /*
+ * Create a new string view that points to the same string as `view`,
+ * but with an offset from the start of the other string view.
+ */
+StringView string_view_offset(StringView *view, size_t offset);
+
+/*
  * Copy the full data referenced by the string view to a new buffer.
  */
 void string_view_copy_to(StringView *view, char *buffer);

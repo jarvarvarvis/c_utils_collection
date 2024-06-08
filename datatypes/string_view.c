@@ -9,6 +9,15 @@ StringView string_view_create(char *ptr, size_t size) {
     return view;
 }
 
+StringView string_view_offset(StringView *view, size_t offset) {
+    StringView other = string_view_create(NULL, 0);
+    if (offset < view->size) {
+        other.ptr = view->ptr + offset;
+        other.size = view->size - offset;
+    }
+    return other;
+}
+
 void string_view_copy_to(StringView *view, char *buffer) {
     memcpy(buffer, view->ptr, view->size);
 }
