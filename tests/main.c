@@ -18,5 +18,6 @@
 
 int main() {
     nft_run_suite(number_parser_parse_ints);
+    nft_run_suite(number_parser_parse_floats);
     nft_log_final();
 }
