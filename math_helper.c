@@ -1,4 +1,4 @@
-#include "math.h"
+#include "math_helper.h"
 
 float math_flt_degrees_to_radians(float degrees) {
     return degrees * MATH_FACTOR_DEG_TO_RAD;
